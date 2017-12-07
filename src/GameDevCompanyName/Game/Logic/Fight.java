@@ -2,7 +2,7 @@ package GameDevCompanyName.Game.Logic;
 
 public class Fight {
 
-    public Result action(int eventCode){
+    public Result action(Action action){
         //TODO
     }
 
