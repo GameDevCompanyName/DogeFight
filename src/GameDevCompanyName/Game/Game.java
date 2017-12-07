@@ -1,26 +1,21 @@
 package GameDevCompanyName.Game;
 
-import GameDevCompanyName.Game.Graphics.Graphics;
-import GameDevCompanyName.Game.Logic.Heroes;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
-public class Game {
+public class Game extends Application{
+    @Override
+    public void start(Stage primaryStage) throws Exception {
 
-    private static final boolean DEBUG = false;
 
-    private Graphics graphics;
 
-    public Game(){
-        Heroes heros = Heroes.init();
-        graphics = new Graphics(heros.getHeroes(), DEBUG);
+
+
+
     }
 
     public static void main(String[] args) {
-        Game game = new Game();
-        game.play();
-    }
 
-    private void play() {
-        graphics.start();
     }
 
 }
