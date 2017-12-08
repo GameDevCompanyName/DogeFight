@@ -1,5 +1,7 @@
 package GameDevCompanyName.Game.Logic;
 
+import GameDevCompanyName.Game.Logic.Utilities.Messages;
+
 public class Character {
 
     public final String avatarPath;
@@ -107,8 +109,9 @@ public class Character {
         }
     }
 
-    public void block(){
+    public String block(){
         isBlocked = true;
+        return null;
     }
 
     public void unBlock() {
@@ -119,7 +122,8 @@ public class Character {
         return isBlocked;
     }
 
-    public FightResult attack(Character character, boolean isStrong){
+    public String attack(Character character, boolean isStrong){
+        unBlock();
         //1 - атака успешна
         //2 - Враг увернуллся
         //3 - враг заблокировал
@@ -131,23 +135,23 @@ public class Character {
             damage *= 1.6;
 
         if (tryDodge(character, isStrong))
-            return new FightResult(character.getName() + " увернулся от удара!", 2);
+            return character.getName() + Messages.getCharacterDodged();
 
         if (character.isBlocked()) {
             if (Math.random() < BASE_BLOCK_CHANCE) {
                 //Жертва смогла заблокировать удар
                 character.dealDamage((int) (damage/5));
-                return new FightResult(character.getName() + " заблокировал удар.", 3);
+                return character.getName() + Messages.getCharacterBlocked();
             } else {
                 //Жертва попыталась и не смогла заблокировать удар
                 character.dealDamage((int) (damage * 1.3));
-                return new FightResult(character.getName() + " пытался заблокировать, но у него не получилось!\n"
-                        + character.getName() + " получает " + damage*1.3 + " единиц урона.", 4);
+                return character.getName() + Messages.getCharacterBlockFailed() + "\n"
+                        + character.getName() + Messages.getCharacterDamaged() + damage*1.3;
             }
         }
 
         character.dealDamage((int) damage);
-        return new FightResult(character.getName() + " получает " + damage + " единиц урона.", 1);
+        return character.getName() + Messages.getCharacterDamaged() + damage;
     }
 
     private boolean tryDodge(Character character, boolean isStrong) {
@@ -167,6 +171,9 @@ public class Character {
         return false;
     }
 
-    public void misturn() {
+    public String misturn() {
+        unBlock();
+        return name + Messages.getCharacterMisturn();
     }
+
 }
