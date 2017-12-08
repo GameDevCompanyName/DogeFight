@@ -13,10 +13,12 @@ public class Game extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Heroes heros = Heroes.init();
-        graphics = new Graphics(heros.getHeroes(), DEBUG);
-        graphics.start();
-
+        //Heroes heros = Heroes.init();
+        //graphics = new Graphics(heros.getHeroes(), DEBUG);
+        //graphics.start();
+        graphics=new Graphics();
+        primaryStage.setScene(graphics.getScene());
+        primaryStage.show();
     }
 
 
