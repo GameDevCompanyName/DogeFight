@@ -1,4 +1,4 @@
-package GameDevCompanyName.Game.Logic;
+package GameDevCompanyName.Game.Logic.Utilities;
 
 public class Result {
 
