@@ -23,7 +23,6 @@ public class Heroes {
                 100,
                 100));
         return heroes;
-
     }
 
 }
