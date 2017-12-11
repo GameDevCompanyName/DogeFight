@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Heroes {
 
-    private List<Character> heroes = new ArrayList<>();
+    private static List<Character> heroes = new ArrayList<>();
 
-    public List<Character> getHeroes(){
+    public static List<Character> getHeroes(){
         heroes.add(new Character("...",
                 "Dogger",
                 10,
