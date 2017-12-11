@@ -1,5 +1,9 @@
 package GameDevCompanyName.Game.Logic;
 
+import GameDevCompanyName.Game.Logic.Utilities.Action;
+import GameDevCompanyName.Game.Logic.Utilities.GameState;
+import GameDevCompanyName.Game.Logic.Utilities.Result;
+
 public class Fight {
 
     private Character leftCharacter;
@@ -11,35 +15,52 @@ public class Fight {
     }
 
     public Result action(Action action){
+
+        //Данное поле будет хранить "ERROR" только в случае ошибки,
+        //так как в при нормальной работе оно обязательно перезапишется
+        String returnText = "---ERROR---";
+
         switch (action){
 
         case LEFT_ATACK:
-            leftCharacter.attack(rightCharacter, false);
+            returnText = leftCharacter.attack(rightCharacter, false);
             break;
         case LEFT_BLOCK:
-            leftCharacter.block();
+            returnText = leftCharacter.block();
             break;
         case LEFT_STRONG_ATTACK:
-            leftCharacter.attack(rightCharacter, true);
+            returnText = leftCharacter.attack(rightCharacter, true);
             break;
         case LEFT_MISTURN:
-            leftCharacter.misturn();
+            returnText = leftCharacter.misturn();
             break;
 
         case RIGHT_ATACK:
-            leftCharacter.attack(rightCharacter, false);
+            returnText = leftCharacter.attack(rightCharacter, false);
             break;
         case RIGHT_BLOCK:
-            leftCharacter.block();
+            returnText = leftCharacter.block();
             break;
         case RIGHT_STRONG_ATTACK:
-            leftCharacter.attack(rightCharacter, true);
+            returnText = leftCharacter.attack(rightCharacter, true);
             break;
         case RIGHT_MISTURN:
-            leftCharacter.misturn();
+            returnText = leftCharacter.misturn();
             break;
 
         }
+
+        if (leftCharacter.isDead() && rightCharacter.isDead())
+            return new Result(returnText, GameState.BOTH_DEAD);
+
+        if (leftCharacter.isDead())
+            return new Result(returnText, GameState.RIGHT_WINS);
+
+        if (rightCharacter.isDead())
+            return new Result(returnText, GameState.LEFT_WINS);
+
+        else return new Result(returnText, GameState.PLAYING);
+
     }
 
 

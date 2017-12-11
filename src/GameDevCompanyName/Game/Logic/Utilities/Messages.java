@@ -10,4 +10,23 @@ public class Messages {
     private static final String CHARACTER_MISTURN = " переводит дух и копит силы.";
 
 
+    public static String getCharacterBlockFailed() {
+        return CHARACTER_BLOCK_FAILED;
+    }
+
+    public static String getCharacterDamaged() {
+        return CHARACTER_DAMAGED;
+    }
+
+    public static String getCharacterBlocked() {
+        return CHARACTER_BLOCKED;
+    }
+
+    public static String getCharacterDodged() {
+        return CHARACTER_DODGED;
+    }
+
+    public static String getCharacterMisturn() {
+        return CHARACTER_MISTURN;
+    }
 }
