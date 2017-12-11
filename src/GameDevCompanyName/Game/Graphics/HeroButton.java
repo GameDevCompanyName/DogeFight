@@ -5,7 +5,9 @@ import javafx.scene.control.Button;
 
 public class HeroButton extends Button {
 
-    HeroButton(String name,int x,int y,int numberInList){
+
+    HeroButton(String name, int x, int y, int numberInList) {
+        setText(name);
         setTranslateX(x);
         setTranslateY(y);
         setPrefWidth(150);
@@ -13,7 +15,6 @@ public class HeroButton extends Button {
 
 
     }
-
 
 
 }
