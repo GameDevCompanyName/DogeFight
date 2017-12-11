@@ -1,6 +1,7 @@
 package GameDevCompanyName.Game.Logic;
 
 import GameDevCompanyName.Game.Logic.Utilities.Messages;
+import GameDevCompanyName.Game.Logic.Utilities.PlayerInfo;
 
 public class Character {
 
@@ -23,6 +24,8 @@ public class Character {
 
     private int maxActionPoints;
     private int actionPoints;
+
+    private CharacterState state = CharacterState.NO_EFFECTS;
 
     private boolean isDead;
 
@@ -176,4 +179,12 @@ public class Character {
         return name + Messages.getCharacterMisturn();
     }
 
+    public PlayerInfo getInfo(){
+        return new PlayerInfo(maxHealth, curHealth,
+                                maxActionPoints, actionPoints, state);
+    }
+
+    public String getAvatarPath() {
+        return avatarPath;
+    }
 }

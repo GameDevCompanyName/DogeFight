@@ -2,6 +2,7 @@ package GameDevCompanyName.Game.Logic;
 
 import GameDevCompanyName.Game.Logic.Utilities.Action;
 import GameDevCompanyName.Game.Logic.Utilities.GameState;
+import GameDevCompanyName.Game.Logic.Utilities.PlayerInfo;
 import GameDevCompanyName.Game.Logic.Utilities.Result;
 
 public class Fight {
@@ -63,6 +64,13 @@ public class Fight {
 
     }
 
+    public PlayerInfo getLeftInfo(){
+        return leftCharacter.getInfo();
+    }
+
+    public PlayerInfo getRightInfo(){
+        return rightCharacter.getInfo();
+    }
 
 
 }
