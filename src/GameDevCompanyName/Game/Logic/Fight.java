@@ -37,16 +37,16 @@ public class Fight {
             break;
 
         case RIGHT_ATACK:
-            returnText = leftCharacter.attack(rightCharacter, false);
+            returnText = rightCharacter.attack(leftCharacter, false);
             break;
         case RIGHT_BLOCK:
-            returnText = leftCharacter.block();
+            returnText = rightCharacter.block();
             break;
         case RIGHT_STRONG_ATTACK:
-            returnText = leftCharacter.attack(rightCharacter, true);
+            returnText = rightCharacter.attack(leftCharacter, true);
             break;
         case RIGHT_MISTURN:
-            returnText = leftCharacter.misturn();
+            returnText = rightCharacter.misturn();
             break;
 
         }
