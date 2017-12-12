@@ -8,6 +8,11 @@ public class Messages {
     private static final String CHARACTER_BLOCK_FAILED = " не смог заблокировать удар и получил урона: ";
     private static final String CHARACTER_DAMAGED = " получил урона: ";
     private static final String CHARACTER_MISTURN = " переводит дух и копит силы.";
+    private static final String CHARACTER_IS_DEAD = " мёртв.";
+    private static final String CHARACTER_BLOCKING = " ставит блок.";
+    private static final String CHARACTER_UNABLE_TO_ACTION = " не может совершить это дейстие.";
+
+    private static final String ACTION_FORBIDDEN_TARGET = "Невозможно применить к данной цели.";
 
 
     public static String getCharacterBlockFailed() {
@@ -28,5 +33,21 @@ public class Messages {
 
     public static String getCharacterMisturn() {
         return CHARACTER_MISTURN;
+    }
+
+    public static String getCharacterIsDead() {
+        return CHARACTER_IS_DEAD;
+    }
+
+    public static String getCharacterBlocking() {
+        return CHARACTER_BLOCKING;
+    }
+
+    public static String getCharacterUnableToAction() {
+        return CHARACTER_UNABLE_TO_ACTION;
+    }
+
+    public static String getWrongTarget() {
+        return ACTION_FORBIDDEN_TARGET;
     }
 }

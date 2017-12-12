@@ -86,6 +86,7 @@ public class Character {
     }
 
     public void kill(){
+        unBlock();
         isDead = true;
         curHealth = 0;
     }
@@ -113,8 +114,14 @@ public class Character {
     }
 
     public String block(){
+        if (isDead) return canNotBecauseDead();
         isBlocked = true;
-        return null;
+        return this.name + Messages.getCharacterBlocking();
+    }
+
+    private String canNotBecauseDead() {
+        return this.name + Messages.getCharacterUnableToAction()
+                + "\n" + this.name + Messages.getCharacterIsDead();
     }
 
     public void unBlock() {
@@ -126,16 +133,20 @@ public class Character {
     }
 
     public String attack(Character character, boolean isStrong){
+
         unBlock();
-        //1 - атака успешна
-        //2 - Враг увернуллся
-        //3 - враг заблокировал
-        //4 - враг пытался заблокировать, но не смог
-        double damage = getToughness()*5/character.getToughness();
-        damage *= 0.8 + Math.random()/2.5;
+
+        if (this.isDead) return canNotBecauseDead();
+
+        if (character.isDead) return forbiddenTarget();
+
+        double doubleDamage = getToughness()*5/character.getToughness();
+        doubleDamage *= 0.8 + Math.random()/2.5;
 
         if (isStrong)
-            damage *= 1.6;
+            doubleDamage *= 1.6;
+
+        int damage = (int) Math.round(doubleDamage);
 
         if (tryDodge(character, isStrong))
             return character.getName() + Messages.getCharacterDodged();
@@ -157,6 +168,10 @@ public class Character {
         return character.getName() + Messages.getCharacterDamaged() + damage;
     }
 
+    private String forbiddenTarget() {
+        return this.name + Messages.getCharacterUnableToAction() + "\n" + Messages.getWrongTarget();
+    }
+
     private boolean tryDodge(Character character, boolean isStrong) {
         double hitChance = BASE_HIT_CHANCE;
         double deltaAgi = Math.abs(getAgility() - character.getAgility());
@@ -176,6 +191,7 @@ public class Character {
 
     public String misturn() {
         unBlock();
+        if (this.isDead) return canNotBecauseDead();
         return name + Messages.getCharacterMisturn();
     }
 
