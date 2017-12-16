@@ -16,7 +16,7 @@ public class Game extends Application {
 
        graphics = new Graphics(Heroes.getHeroes(), DEBUG);
 
-       // graphics=new Graphics();
+
         primaryStage.setScene(graphics.getScene());
         primaryStage.show();
     }

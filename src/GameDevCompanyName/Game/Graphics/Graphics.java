@@ -3,7 +3,6 @@ package GameDevCompanyName.Game.Graphics;
 import GameDevCompanyName.Game.Logic.Character;
 import GameDevCompanyName.Game.Logic.Fight;
 import GameDevCompanyName.Game.Logic.Utilities.Action;
-import GameDevCompanyName.Game.Logic.Utilities.PlayerInfo;
 import GameDevCompanyName.Game.Logic.Utilities.Result;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -12,8 +11,8 @@ import java.util.List;
 
 
 public class Graphics {
-    private PlayerInfoBar playerInfoLeft;
-    private PlayerInfoBar playerInfoRight;
+    private PlayerInfoBar playerInfoLeftBar;
+    private PlayerInfoBar playerInfoRightBar;
     private Fight fight;
     private Pane fightMenu;
     private Scene scene;
@@ -23,10 +22,10 @@ public class Graphics {
     public Graphics(List<Character> heroes, boolean DEBUG) {
         this.fight = new Fight(heroes.get(0), heroes.get(1));
         fightMenu = new Pane();
-        playerInfoLeft = new PlayerInfoBar(fight.getLeftInfo(), 200, 50);
-        playerInfoRight = new PlayerInfoBar(fight.getRightInfo(), 400, 50);
-        fightMenu.getChildren().add(playerInfoLeft);
-        fightMenu.getChildren().add(playerInfoRight);
+        playerInfoLeftBar = new PlayerInfoBar(fight.getLeftInfo(), 200, 50);
+        playerInfoRightBar = new PlayerInfoBar(fight.getRightInfo(), 400, 50);
+        fightMenu.getChildren().add(playerInfoLeftBar);
+        fightMenu.getChildren().add(playerInfoRightBar);
         fightMenu.getChildren().add(new HeroButton("PlayerOne", 100, 100, 1));
         fightMenu.getChildren().add(new HeroButton("PlayerTwo", 350, 100, 2));
         initLeftButtons();
@@ -64,8 +63,8 @@ public class Graphics {
 
     public void update(Result result) {
         System.out.println(result.text);
-        playerInfoLeft.update(fight.getLeftInfo());
-        playerInfoRight.update(fight.getRightInfo());
+        playerInfoLeftBar.update(fight.getLeftInfo());
+        playerInfoRightBar.update(fight.getRightInfo());
 
 
     }
